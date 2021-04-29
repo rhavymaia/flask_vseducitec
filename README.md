@@ -1,9 +1,7 @@
 
 # Flask e SQlite
 # Flask
-- Disponibilizar na Internet, via HTTP, o acesso a funções das aplicações.
-- Não utiliza bibliotecas de terceiros: microframework.
-- Site oficial: https://flask.palletsprojects.com/.
+Disponibiliza na Internet, via HTTP, o acesso a funções das aplicações. Não utiliza bibliotecas de terceiros: microframework. Disponível em: https://flask.palletsprojects.com/.
 	
 ## Instalação
 Instalar no Linux ou Windows a versão do **Python 3.8** e preparar o ambiente virtualizado utilizando **Virtual Environment**.
@@ -58,25 +56,32 @@ c:[diretorio_da_app]/> set FLASK_APP=hello.py
 ### Executando
 	flask run
 
-## Recebendo valores
+## Recebendo Valores 
+### Path parameter
 ```py
-@app.route('/user/<username>')
-def show_user_profile(username):
-  # show the user profile for that user
-  return 'User %s' % escape(username)
-
-@app.route('/post/<int:post_id>')
-def show_post(post_id):
-  # show the post with the given id, the id is an integer
-  return 'Post %d' % post_id
+@app.route('/alunos/<int:id>')
+def getAluno(id):
+	return {'id': id, 'nome': 'João', 'email': 'joao@academico.ifpb.edu.br'}
 ```
-Métodos HTTP
-	from flask import request
-
-	@app.route('/login', methods=['GET', 'POST'])
-	def login():
-	    if request.method == 'POST':
-		return do_the_login()
-	    else:
-		return show_the_login_form()
-
+## Métodos HTTP
+- POST
+```py
+@app.route('/aluno', methods=['POST'])
+def setAluno():
+	return  'requisição via post'
+```
+# SQlite
+Banco de dados leve para execução embarcada em aplicações.
+```py
+import sqlite3
+conn = sqlite3.connect('escola.db')
+cursor = conn.cursor()
+cursor.execute(""" CREATE TABLE tb_aluno(
+	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	nome VARCHAR(30) NOT NULL,
+	email TEXT NOT NULL
+);
+""")
+conn.close()
+print("Tabelas criadas com sucesso!")
+```
