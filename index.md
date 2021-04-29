@@ -1,37 +1,87 @@
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/rhavymaia/flask_vseducitec/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+# Flask e SQlite
+# Flask
+Disponibiliza na Internet, via HTTP, o acesso a funções das aplicações. Não utiliza bibliotecas de terceiros: microframework. Disponível em: https://flask.palletsprojects.com/.
+	
+## Instalação
+Instalar no Linux ou Windows a versão do **Python 3.8** e preparar o ambiente virtualizado utilizando **Virtual Environment**.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Virtual Environment (venv)
+- Instalar o python-virtualenv:
+```sh
+$ sudo apt-get install python-virtualenv
+```
+- Criar o venv:
+```sh
+python3 -m venv servicoapp_venv
+```
+- Ativar venv:
+```sh
+source minha_env/bin/activate
+```
+- Adicionar o Flask no ambiente isolado do venv:
+```sh
+pip3 install flask
+```
+- Desativar venv
+```sh
+deactivate
+```
+## Hello, world.
+```py
+from flask import Flask
+app = Flask(__name__)
 
-### Markdown
+@app.route('/')
+def hello_world():
+	return 'Hello, World!'
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+if(__name__ == '__main__'):
+	app.run(host='0.0.0.0', debug=True, use_reloader=True)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Execução
+### Declarar variáveis de ambiente
+- Ubuntu
+```sh
+[diretorio_da_app]$ export FLASK_APP=app.py
+```
+- Uindous
+```sh
+c:[diretorio_da_app]/> set FLASK_APP=hello.py
+```
+### Modo depuração
+	[diretorio_da_app]$ export FLASK_ENV=development
+	
+### Executando
+	flask run
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/rhavymaia/flask_vseducitec/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## Recebendo Valores 
+### Path parameter
+```py
+@app.route('/alunos/<int:id>')
+def getAluno(id):
+	return {'id': id, 'nome': 'João', 'email': 'joao@academico.ifpb.edu.br'}
+```
+## Métodos HTTP
+- POST
+```py
+@app.route('/aluno', methods=['POST'])
+def setAluno():
+	return  'requisição via post'
+```
+# SQlite
+Banco de dados leve para execução embarcada em aplicações.
+```py
+import sqlite3
+conn = sqlite3.connect('escola.db')
+cursor = conn.cursor()
+cursor.execute(""" CREATE TABLE tb_aluno(
+	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	nome VARCHAR(30) NOT NULL,
+	email TEXT NOT NULL
+);
+""")
+conn.close()
+print("Tabelas criadas com sucesso!")
+```
