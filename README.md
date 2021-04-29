@@ -49,18 +49,20 @@ deactivate
 ### Declarar variáveis de ambiente
 - Ubuntu
 ```sh
-[diretorio_da_app]$ export FLASK_APP=App.py
+$ export FLASK_APP=App.py
 ```
 - Uindous :)
 ```sh
-c:[diretorio_da_app]/> set FLASK_APP=hello.py
+set FLASK_APP=hello.py
 ```
 ### Modo depuração
-	[diretorio_da_app]$ export FLASK_ENV=development
-	
+```sh
+$ export FLASK_ENV=development
+```
 ### Executando
-	flask run
-
+```sh
+flask run
+```
 ## Recebendo Valores 
 ### Path parameter
 ```py
