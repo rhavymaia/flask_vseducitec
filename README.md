@@ -1,10 +1,3 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/rhavymaia/flask_vseducitec/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-
 # Flask e SQlite
 # Flask
 Disponibiliza na Internet, via HTTP, o acesso a funções das aplicações. Não utiliza bibliotecas de terceiros: microframework. Disponível em: https://flask.palletsprojects.com/.
