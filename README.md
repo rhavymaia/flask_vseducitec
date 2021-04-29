@@ -5,10 +5,8 @@ Disponibilizar na Internet, via HTTP, o acesso as funções das aplicações. N�
 
 ![enter image description here](https://dz2cdn1.dzone.com/storage/temp/10940394-rest-api-using-spring-boot.png)
 Criado por: https://dzone.com/articles/5-courses-to-learn-restful-web-services-with-java.
-
 ## Instalação
 Instalar no Linux ou Windows a versão do **Python 3.8** e preparar o ambiente virtualizado utilizando **Virtual Environment**.
-
 ### Virtual Environment (venv)
 - Instalar o python-virtualenv:
 ```sh
@@ -30,7 +28,6 @@ pip3 install flask
 ```sh
 deactivate
 ```
-
 ## Hello, world.
 ```py
 	from flask import Flask
@@ -44,7 +41,6 @@ deactivate
 		# parâmetros são opcionais.
 		app.run(host='0.0.0.0', debug=True, use_reloader=True) 		
 ```
-
 ## Execução
 ### Declarar variáveis de ambiente
 - Ubuntu
@@ -77,6 +73,7 @@ flask run
 	def setAluno():
 		return  'requisição via post'
 ```
+
 # SQlite
 Banco de dados leve para execução embarcada em aplicações. Disponível em:  https://docs.python.org/3/library/sqlite3.html
 ```py
